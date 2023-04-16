@@ -22,28 +22,57 @@ func (l *List) Push(node *Node) {
 		l.tail.next = node
 		l.tail = node
 	}
+
 	l.len++
+}
+
+// Delete is deleting given node from list
+func (l *List) Delete(node *Node) {
+	if node.next == nil {
+		l.Pop()
+	} else {
+		curr := l.head
+
+		for curr != nil {
+			if curr.next == node {
+				curr.next = node.next
+				break
+			}
+
+			curr = curr.next
+		}
+	}
 }
 
 // Pop removes last node from the list and returns it
 func (l *List) Pop() *Node {
 	if l.head == nil {
 		return nil
-	} else {
-		iter := l.head.next
-		for iter != nil {
-			curr := iter
-			iter = curr.next
-
-			if iter.next == nil {
-				l.tail = curr
-				l.tail.next = nil
-				l.len--
-				return iter
-			}
-		}
-		return nil
 	}
+
+	if l.len == 1 {
+		l.tail = nil
+		l.head = nil
+		l.len--
+
+		return l.head
+	}
+
+	curr := l.head
+
+	for curr != nil {
+		prev := curr
+		curr = curr.next
+
+		if curr.next == nil {
+			l.tail = prev
+			l.tail.next = nil
+			l.len--
+			return curr
+		}
+	}
+
+	return nil
 }
 
 // Print the values of nodes
@@ -71,5 +100,7 @@ func main() {
 	list.Push(&fourth)
 	list.Print()
 	list.Pop()
+	list.Print()
+	list.Delete(&second)
 	list.Print()
 }
