@@ -28,19 +28,15 @@ func (l *List) Push(node *Node) {
 
 // Delete is deleting given node from list
 func (l *List) Delete(node *Node) {
-	if node.next == nil {
-		l.Pop()
-	} else {
-		curr := l.head
+	curr := l.head
 
-		for curr != nil {
-			if curr.next == node {
-				curr.next = node.next
-				break
-			}
-
-			curr = curr.next
+	for curr != nil {
+		if curr.next == node {
+			curr.next = node.next
+			break
 		}
+
+		curr = curr.next
 	}
 }
 
