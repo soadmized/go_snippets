@@ -71,6 +71,21 @@ func (l *List) Pop() *Node {
 	return nil
 }
 
+// Reverse is deleting given node from list
+func (l *List) Reverse() {
+	var prev *Node
+	curr := l.head
+
+	for curr != nil {
+		next := curr.next
+		curr.next = prev
+		prev = curr
+		curr = next
+	}
+
+	l.head = prev
+}
+
 // Print the values of nodes
 func (l *List) Print() {
 	iter := l.head
@@ -98,5 +113,6 @@ func main() {
 	list.Pop()
 	list.Print()
 	list.Delete(&second)
+	list.Reverse()
 	list.Print()
 }
