@@ -9,6 +9,7 @@ func FindElement[T comparable](haystack []T, needle T) int {
 			return i
 		}
 	}
+
 	return -1
 }
 

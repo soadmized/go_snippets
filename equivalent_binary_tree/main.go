@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"golang.org/x/tour/tree"
 	"sort"
 	"time"
+
+	"golang.org/x/tour/tree"
 )
 
 // Walk walks the tree t sending all values
