@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func isPrime(x int) bool {
+func IsPrime(x int) bool {
 	y := int(math.Sqrt(float64(x)))
 
 	for i := 2; i < (y + 1); i++ {
@@ -19,5 +19,5 @@ func isPrime(x int) bool {
 
 func main() {
 	x := 5
-	fmt.Printf("%d is prime: %t", x, isPrime(x))
+	fmt.Printf("%d is prime: %t", x, IsPrime(x))
 }
