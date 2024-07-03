@@ -11,7 +11,7 @@ import (
 func main() {
 	//countRows()
 
-	path := "path/to/file.xlsx"
+	path := "50k.xlsx"
 	err := collectProductIDs(path)
 	if err != nil {
 		log.Fatal(err)

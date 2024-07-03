@@ -1,3 +1,4 @@
 .idea
 init.go
 .env
+.DS_Store
