@@ -11,19 +11,12 @@ func generateLogs(count int) []logDoc {
 
 	for range count {
 		logs = append(logs, logDoc{
-			EventID:        uuid.New(),
-			ProductID:      uuid.New(),
-			PromoID:        123,
-			Timestamp:      time.Now(),
-			CreatedBy:      "John Snow",
-			ModType:        modTypeAdd,
-			LocalityID:     uuid.New(),
-			Price:          10000,
-			MaxSoldCount:   1000,
-			OrderLimit:     100,
-			IsPriority:     true,
-			IsUploadToFeed: true,
-			Lifetime:       time.Now().Add(time.Hour),
+			EventID:   uuid.New(),
+			ProductID: uuid.New(),
+			Timestamp: time.Now(),
+			CreatedBy: "John Snow",
+			Price:     10000,
+			Lifetime:  time.Now().Add(time.Hour),
 		})
 	}
 

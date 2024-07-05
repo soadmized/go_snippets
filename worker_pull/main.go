@@ -11,11 +11,9 @@ func main() {
 
 	res := make(chan string)
 	input := make(chan int)
-	wg := sync.WaitGroup{}
-	wg.Add(workersCount)
 
 	go produceTasks(input, tasksCount)
-	go processTasks(input, res, &wg, workersCount)
+	go processTasks(input, res, workersCount)
 
 	for result := range res {
 		fmt.Println(result)
@@ -31,7 +29,10 @@ func produceTasks(ch chan int, tasks int) {
 	close(ch)
 }
 
-func processTasks(inputChan chan int, resChan chan string, wg *sync.WaitGroup, workersCount int) {
+func processTasks(inputChan chan int, resChan chan string, workersCount int) {
+	wg := sync.WaitGroup{}
+	wg.Add(workersCount)
+
 	for i := range workersCount {
 		go func(i int) {
 			defer wg.Done()
